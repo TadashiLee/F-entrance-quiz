@@ -24,7 +24,7 @@ class App extends Component {
       .then((resp) => {
         this.setState({
           students: resp.data,
-          showGroup: resp.data,
+          showGroup: [...resp.data],
         });
       })
       .catch(() => {});
@@ -45,7 +45,7 @@ class App extends Component {
         <div>分组列表</div>
         {this.state.showTable ? (
           <div>
-            <Form students={this.state.showGroup} />
+            <Form showGroup={this.state.showGroup} />
           </div>
         ) : (
           ''
