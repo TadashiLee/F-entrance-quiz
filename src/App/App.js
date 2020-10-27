@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import http from '../utils/http/index';
 import Students from '../components/Students/index';
 import './App.scss';
+import Form from '../components/Form/index';
 
 class App extends Component {
   constructor(props) {
@@ -41,10 +42,10 @@ class App extends Component {
   render() {
     return (
       <div data-testid="app" className="App">
+        <div>分组列表</div>
         {this.state.showTable ? (
           <div>
-            <div>分组列表</div>
-            <Students students={this.state.showGroup} />
+            <Form students={this.state.showGroup} />
           </div>
         ) : (
           ''
