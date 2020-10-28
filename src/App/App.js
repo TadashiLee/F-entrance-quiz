@@ -11,6 +11,8 @@ class App extends Component {
       students: [],
       showTable: false,
       showGroup: [],
+      showInput: false,
+      addName: '',
     };
   }
 
@@ -39,6 +41,26 @@ class App extends Component {
     }));
   };
 
+  addStudent = () => {
+    this.setState({
+      showInput: true,
+    });
+  };
+
+  changeName = (e) => {
+    this.setState({
+      addName: e.target.value,
+    });
+  };
+
+  onKeyupEnter = (e) => {
+    if (e.keyCode === 13) {
+      this.setState({
+        showInput: false,
+      });
+    }
+  };
+
   render() {
     return (
       <div data-testid="app" className="App">
@@ -55,6 +77,18 @@ class App extends Component {
         </button>
         <div>学员列表</div>
         <Students students={this.state.students} />
+        {this.state.showInput ? (
+          <input
+            type="text"
+            value={this.state.addName}
+            onChange={this.changeName}
+            onKeyUp={this.onKeyupEnter}
+          />
+        ) : (
+          <button type="button" onClick={this.addStudent}>
+            +添加学员
+          </button>
+        )}
       </div>
     );
   }
