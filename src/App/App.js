@@ -25,7 +25,7 @@ class App extends Component {
       .get('/students')
       .then((resp) => {
         this.setState({
-          students: resp.data,
+          students: [...resp.data],
           showGroup: [...resp.data],
         });
       })
@@ -58,6 +58,13 @@ class App extends Component {
       this.setState({
         showInput: false,
       });
+      const addStudent = { id: this.state.students.length + 1, name: this.state.addName };
+      http
+        .post('/student', addStudent)
+        .then(() => {
+          this.getStudens();
+        })
+        .catch();
     }
   };
 
