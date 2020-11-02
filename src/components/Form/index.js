@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+// TODO GTB-知识点: - 组件的名字叫Form，但是好像又做了分组的事情？
 class Form extends Component {
   groupingArray = (data) => {
     const group = [];
@@ -20,6 +20,7 @@ class Form extends Component {
     const groups = this.groupingArray(showGroup);
     return groups.map((group, index) => (
       <div>
+        {/* // TODO GTB-知识点: - 每个组的id不应该在前端生成，应该来自后端 */}
         <div>第{index + 1}组</div>
         {group.map((student) => (
           <ul>
